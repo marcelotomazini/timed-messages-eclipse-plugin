@@ -6,6 +6,8 @@ import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
+import com.marcelotomazini.eclipse.plugins.timer.TimerPlugin;
+
 public class TimerPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	public TimerPreferencePage() {
@@ -15,8 +17,7 @@ public class TimerPreferencePage extends FieldEditorPreferencePage implements IW
 
 	@Override
 	public void createFieldEditors() {
-		addField(new AnnotationExcludeListEditor(PreferenceConstants.P_ANNOTATION_EXCLUDES, "&Exclude from search the methods annotated with:", getFieldEditorParent()));		
-		addField(new MethodExcludeListEditor(PreferenceConstants.P_METHOD_NAME_EXCLUDES, "&Exclude from search the methods named with:", getFieldEditorParent()));		
+		addField(new TimerListEditor(PreferenceConstants.P_TIMER, "&Timers", getFieldEditorParent()));		
 	}
 
 	@Override

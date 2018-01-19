@@ -1,14 +1,12 @@
 package com.marcelotomazini.eclipse.plugins.timer.preferences;
 
-import org.eclipse.jface.dialogs.IInputValidator;
-import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.preference.ListEditor;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Composite;
 
-public class AnnotationExcludeListEditor extends ListEditor {
+public class TimerListEditor extends ListEditor {
 	
-	protected AnnotationExcludeListEditor(String name, String labelText, Composite parent) {
+	protected TimerListEditor(String name, String labelText, Composite parent) {
 		init(name, labelText);
 		createControl(parent);
 	}
@@ -24,17 +22,14 @@ public class AnnotationExcludeListEditor extends ListEditor {
 
 	@Override
 	protected String getNewInputObject() {
-		InputDialog dialog = new InputDialog(getShell(), "Input Annotation", "Enter an annotation to be excluded:", "", new IInputValidator() {
-			@Override public String isValid(String newText) {
-				if(newText.startsWith("@"))
-					return "Insert the annotation without @";
-
-				return null;
-			}
-		});
-		if (dialog.open() == Window.OK) {
-			return dialog.getValue();
+		Timer dialog = new Timer(getShell());
+		if(dialog.open() == Window.OK) {
+			return String.format("%s-%s minutes (%s)",
+					dialog.getName(),
+					dialog.getTimer(),
+					dialog.isActive() ? "Active" : "Inactive");
 		}
+		
 		return null;
 	}
 
