@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.preferencePages">
+    	<page class="com.marcelotomazini.eclipse.plugins.timer.preferences.TimerPreferencePage" id="com.marcelotomazini.eclipse.plugins.timer.preferences.TimerPreferencePage" name="Timer"/>
+   	</extension>
+
+   	<extension point="org.eclipse.core.runtime.preferences">
+      	<initializer class="com.marcelotomazini.eclipse.plugins.timer.preferences.PreferenceInitializer"/>
+   	</extension>
+
+</plugin>
