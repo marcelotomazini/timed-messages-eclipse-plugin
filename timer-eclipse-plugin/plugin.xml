@@ -4,9 +4,21 @@
 	<extension point="org.eclipse.ui.preferencePages">
     	<page class="com.marcelotomazini.eclipse.plugins.timer.preferences.TimerPreferencePage" id="com.marcelotomazini.eclipse.plugins.timer.preferences.TimerPreferencePage" name="Timer"/>
    	</extension>
-
-   	<extension point="org.eclipse.core.runtime.preferences">
-      	<initializer class="com.marcelotomazini.eclipse.plugins.timer.preferences.PreferenceInitializer"/>
+   	
+   	<extension point="org.eclipse.ui.commands">
+     	<command name="Timer"
+            id="timerCommand"
+            defaultHandler="com.marcelotomazini.eclipse.plugins.timer.handlers.TimerHandler">
+     	</command>
    	</extension>
-
+   	
+   	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+          	<command
+                 commandId="timerCommand"
+                 icon="icons/timer.gif"
+                 label="Timer">
+          	</command>
+		</menuContribution>
+	</extension>
 </plugin>

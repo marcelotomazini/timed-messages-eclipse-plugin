@@ -6,7 +6,7 @@ import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-import com.marcelotomazini.eclipse.plugins.timer.TimerPlugin;
+import com.marcelotomazini.eclipse.plugins.TimerPlugin;
 
 public class TimerPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
@@ -17,7 +17,7 @@ public class TimerPreferencePage extends FieldEditorPreferencePage implements IW
 
 	@Override
 	public void createFieldEditors() {
-		addField(new TimerListEditor(PreferenceConstants.P_TIMER, "&Timers", getFieldEditorParent()));		
+		addField(new TimerListEditor(TimerPlugin.getId(), "&Timers", getFieldEditorParent()));		
 	}
 
 	@Override

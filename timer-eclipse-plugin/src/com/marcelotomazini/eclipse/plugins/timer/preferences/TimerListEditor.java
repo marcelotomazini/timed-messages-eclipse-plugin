@@ -1,10 +1,19 @@
 package com.marcelotomazini.eclipse.plugins.timer.preferences;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.jface.preference.ListEditor;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Composite;
 
+import com.marcelotomazini.eclipse.plugins.timer.Timer;
+import com.marcelotomazini.eclipse.plugins.timer.TimerList;
+import com.marcelotomazini.eclipse.plugins.timer.utils.MarshallUtils;
+
 public class TimerListEditor extends ListEditor {
+
+	private TimerList timerList = new TimerList();
 	
 	protected TimerListEditor(String name, String labelText, Composite parent) {
 		init(name, labelText);
@@ -13,28 +22,32 @@ public class TimerListEditor extends ListEditor {
 
 	@Override
 	protected String createList(String[] items) {
-		StringBuilder result = new StringBuilder();
-		for (int i = 0; i < items.length; i++) {
-			result.append(items[i]).append(" \n");
-		}
-		return result.toString();
+		return MarshallUtils.marshall(TimerList.class, timerList);
 	}
 
 	@Override
 	protected String getNewInputObject() {
-		Timer dialog = new Timer(getShell());
-		if(dialog.open() == Window.OK) {
-			return String.format("%s-%s minutes (%s)",
-					dialog.getName(),
-					dialog.getTimer(),
-					dialog.isActive() ? "Active" : "Inactive");
+		NewTimerDialog dialog = new NewTimerDialog(getShell());
+		if (dialog.open() == Window.OK) {
+			Timer timer = dialog.getTimer();
+			
+			timerList.add(timer);
+			return timer.toString();
 		}
-		
+
 		return null;
 	}
 
 	@Override
 	protected String[] parseString(String stringList) {
-		return stringList.split("\\s+");
+		if(stringList.isEmpty())
+			return new String[0];
+		
+		timerList = MarshallUtils.unmarshall(TimerList.class, stringList);
+		List<String> timers = new ArrayList<String>();
+		for(Timer timer : timerList.getTimers())
+			timers.add(timer.toString());
+		
+		return (String[]) timers.toArray(new String[timers.size()]);
 	}
 }
