@@ -1,4 +1,4 @@
-package com.marcelotomazini.eclipse.plugins;
+package com.marcelotomazini.eclipse.plugins.timer;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 

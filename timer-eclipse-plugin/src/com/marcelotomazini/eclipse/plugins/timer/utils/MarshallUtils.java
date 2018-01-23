@@ -7,13 +7,11 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import com.marcelotomazini.eclipse.plugins.timer.Timer;
-
 public class MarshallUtils {
 	@SuppressWarnings("unchecked")
 	public static <T> T unmarshall(Class<T> clazz, String xml) {
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(Timer.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			T unmarshal = (T) unmarshaller.unmarshal(new ByteArrayInputStream(xml.getBytes()));
 

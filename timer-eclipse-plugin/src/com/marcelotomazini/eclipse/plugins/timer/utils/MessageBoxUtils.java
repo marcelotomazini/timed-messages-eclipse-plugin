@@ -7,8 +7,8 @@ public class MessageBoxUtils {
 
 	public static void showMessageBox(Shell shell, String title, String message) {
 		MessageBox messageBox = new MessageBox(shell);
-		messageBox.setText("Error");
-		messageBox.setMessage("You must select an existing timer");
+		messageBox.setText(title);
+		messageBox.setMessage(message);
 		messageBox.open();
 	}
 }

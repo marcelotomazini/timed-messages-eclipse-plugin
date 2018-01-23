@@ -1,5 +1,7 @@
 package com.marcelotomazini.eclipse.plugins.timer.handlers;
 
+import java.util.List;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -18,7 +20,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.eclipse.ui.progress.UIJob;
 
-import com.marcelotomazini.eclipse.plugins.TimerPlugin;
+import com.marcelotomazini.eclipse.plugins.timer.Timer;
+import com.marcelotomazini.eclipse.plugins.timer.TimerList;
+import com.marcelotomazini.eclipse.plugins.timer.TimerPlugin;
+import com.marcelotomazini.eclipse.plugins.timer.utils.MarshallUtils;
 import com.marcelotomazini.eclipse.plugins.timer.utils.MessageBoxUtils;
 
 public class TimerHandler extends AbstractHandler implements IHandler {
@@ -38,29 +43,25 @@ public class TimerHandler extends AbstractHandler implements IHandler {
 		IPreferenceStore prefs = new ScopedPreferenceStore(InstanceScope.INSTANCE,
 				TimerPlugin.getDefault().getBundle().getSymbolicName());
 
-		String[] timers = prefs.getString(TimerPlugin.getId()).split("\\n+");
-		if (timers[0].isEmpty())
+		TimerList timerList = MarshallUtils.unmarshall(TimerList.class, prefs.getString(TimerPlugin.getId()));
+		if (timerList.getTimers().isEmpty())
 			noTimersToEnable();
 		else
-			chooseTimer(timers);
+			chooseTimer(timerList.getTimers());
 	}
 
-	private void chooseTimer(String[] timers) {
+	private void chooseTimer(List<Timer> timers) {
 		TimerChooser dialog = new TimerChooser(getShell(), timers);
 		if (dialog.open() == Window.OK)
 			enableTimer(dialog.getSelectedTimer());		
 	}
 
-	private void enableTimer(String selectedTimer) {
-		final int timer = Integer
-				.valueOf(selectedTimer.substring(selectedTimer.indexOf(" (") + 2, selectedTimer.indexOf(" minutes)")));
-		final String message = selectedTimer.substring(0, selectedTimer.indexOf(" ("));
-
+	private void enableTimer(final Timer selectedTimer) {
 		final int toMinutes = 60000;
-		job = new UIJob(selectedTimer) {
+		job = new UIJob(selectedTimer.toString()) {
 			@Override
 			public IStatus runInUIThread(IProgressMonitor monitor) {
-				schedule(timer * toMinutes);
+				schedule(selectedTimer.getTime() * toMinutes);
 				return Status.OK_STATUS;
 			}
 		};
@@ -70,11 +71,11 @@ public class TimerHandler extends AbstractHandler implements IHandler {
 					MessageBoxUtils.showMessageBox(
 							getShell(), 
 							"Info", 
-							message);
+							selectedTimer.getName());
 			}
 		});
 		job.setSystem(true);
-		job.schedule(timer * toMinutes);
+		job.schedule(selectedTimer.getTime() * toMinutes);
 	}
 
 	private void disableTimer() {

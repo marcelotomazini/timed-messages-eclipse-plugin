@@ -1,5 +1,6 @@
 package com.marcelotomazini.eclipse.plugins.timer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -12,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class TimerList {
 
 	@XmlElement
-	private List<Timer> timers;
+	private List<Timer> timers = new ArrayList<Timer>();
 
 	public List<Timer> getTimers() {
 		return timers;
