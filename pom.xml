@@ -2,20 +2,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.marcelotomazini.eclipse.plugins</groupId>
-	<artifactId>timer</artifactId>
+	<artifactId>timed-messages</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Timer</name>
+	<name>timed-messages</name>
 
 	<prerequisites>
 		<maven>3.0</maven>
 	</prerequisites>
 
 	<modules>
-		<module>timer-eclipse-plugin</module>
-		<module>timer-eclipse-plugin-test</module>
-		<module>timer-eclipse-plugin-feature</module>
-		<module>timer-eclipse-plugin-repository</module>
+		<module>timed-messages-eclipse-plugin</module>
+		<module>timed-messages-eclipse-plugin-test</module>
+		<module>timed-messages-eclipse-plugin-feature</module>
+		<module>timed-messages-eclipse-plugin-repository</module>
 	</modules>
 
 	<properties>
@@ -24,8 +24,8 @@
 	</properties>
 
 	<scm>
-		<connection>scm:git:git@github.com:marcelotomazini/timer.git</connection>
-		<url>git@github.com:marcelotomazini/timer.git</url>
+		<connection>scm:git:git@github.com:marcelotomazini/timed-messages.git</connection>
+		<url>git@github.com:marcelotomazini/timed-messages.git</url>
 		<tag>HEAD</tag>
 	</scm>
 
