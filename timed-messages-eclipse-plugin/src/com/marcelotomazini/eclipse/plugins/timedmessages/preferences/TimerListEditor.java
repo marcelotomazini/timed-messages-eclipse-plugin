@@ -22,7 +22,25 @@ public class TimerListEditor extends ListEditor {
 
 	@Override
 	protected String createList(String[] items) {
+		List<Timer> timers = new ArrayList<>();
+		for(String item : items)
+			timers.add(findTimer(item));
+		timerList.setTimers(timers);
 		return MarshallUtils.marshall(TimerList.class, timerList);
+	}
+
+	private Timer findTimer(String item) {
+		int openBracket = item.lastIndexOf("(");
+		int closeBracket = item.lastIndexOf(")");
+
+		String name = item.substring(0, openBracket - 1);
+		int time = Integer.valueOf(item.substring(openBracket + 1, closeBracket));
+		
+		Timer timer = new Timer();
+		timer.setName(name);
+		timer.setTime(time);
+		
+		return timer;
 	}
 
 	@Override

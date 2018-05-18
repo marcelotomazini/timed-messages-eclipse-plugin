@@ -44,7 +44,7 @@ public class TimerChooser extends Dialog {
 	
 	private Timer findBy(String name) {
 		for(Timer t : timers)
-			if(t.getName().equals(name))
+			if(t.toString().equals(name))
 				return t;
 		
 		return null;

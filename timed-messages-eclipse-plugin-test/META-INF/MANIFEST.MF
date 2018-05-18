@@ -18,3 +18,4 @@ Require-Bundle: org.junit;bundle-version="4.8",
  org.eclipse.m2e.model.edit;bundle-version="1.0.0",
  timed-messages-eclipse-plugin;bundle-version="0.0.1"
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: timed-messages-eclipse-plugin-test

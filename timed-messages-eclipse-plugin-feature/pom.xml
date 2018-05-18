@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>timed-messages</artifactId>
 		<groupId>com.marcelotomazini.eclipse.plugins</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
 	<artifactId>timed-messages-eclipse-plugin-feature</artifactId>
 	<packaging>eclipse-feature</packaging>

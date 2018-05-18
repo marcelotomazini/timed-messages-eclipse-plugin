@@ -2,11 +2,11 @@
 <?eclipse version="3.4"?>
 <plugin>
 	<extension point="org.eclipse.ui.preferencePages">
-    	<page class="com.marcelotomazini.eclipse.plugins.timedmessages.preferences.TimedMessagesPreferencePage" id="com.marcelotomazini.eclipse.plugins.timedmessages.preferences.TimedMessagesPreferencePage" name="timed-messages"/>
+    	<page class="com.marcelotomazini.eclipse.plugins.timedmessages.preferences.TimedMessagesPreferencePage" id="com.marcelotomazini.eclipse.plugins.timedmessages.preferences.TimedMessagesPreferencePage" name="Timed messages"/>
    	</extension>
    	
    	<extension point="org.eclipse.ui.commands">
-     	<command name="timed-messages"
+     	<command name="Timed messages"
             id="timed-messagesCommand"
             defaultHandler="com.marcelotomazini.eclipse.plugins.timedmessages.handlers.TimerHandler">
      	</command>
@@ -17,7 +17,7 @@
           	<command
                  commandId="timed-messagesCommand"
                  icon="icons/timer.gif"
-                 label="timed-messages">
+                 label="Timed messages">
           	</command>
 		</menuContribution>
 	</extension>
