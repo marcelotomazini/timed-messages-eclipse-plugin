@@ -11,6 +11,9 @@ public class MarshallUtils {
 	@SuppressWarnings("unchecked")
 	public static <T> T unmarshall(Class<T> clazz, String xml) {
 		try {
+			if(xml.isEmpty())
+				return null;
+			
 			JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			T unmarshal = (T) unmarshaller.unmarshal(new ByteArrayInputStream(xml.getBytes()));

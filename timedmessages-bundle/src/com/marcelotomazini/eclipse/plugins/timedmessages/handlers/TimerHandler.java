@@ -44,7 +44,7 @@ public class TimerHandler extends AbstractHandler implements IHandler {
 				TimedMessagesPlugin.getDefault().getBundle().getSymbolicName());
 
 		TimerList timerList = MarshallUtils.unmarshall(TimerList.class, prefs.getString(TimedMessagesPlugin.getId()));
-		if (timerList.getTimers().isEmpty())
+		if (timerList == null || timerList.getTimers().isEmpty())
 			noTimersToEnable();
 		else
 			chooseTimer(timerList.getTimers());
