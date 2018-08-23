@@ -21,6 +21,13 @@
 		<module>mars</module>
 	</modules>
 
+	<scm>
+  		<connection>scm:git:git@github.com:marcelotomazini/timed-messages-eclipse-plugin.git</connection>
+  		<developerConnection>scm:git:git@github.com:marcelotomazini/timed-messages-eclipse-plugin.git</developerConnection>
+  		<url>git@github.com:marcelotomazini/timed-messages-eclipse-plugin.git</url>
+	  	<tag>HEAD</tag>
+  	</scm>
+  	
 	<build>
 		<plugins>
 			<plugin>
