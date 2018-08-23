@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/timedmessages-feature_1.0.0.qualifier.jar" id="timedmessages-feature" version="1.0.0.qualifier">
+      <category name="timedmessages_category_id"/>
+   </feature>
+   <category-def name="timedmessages_category_id" label="Timed Messages">
+      <description>
+         Timed messages eclipse plugin
+      </description>
+   </category-def>
+</site>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <category-def name="timed-messages_category" label="timed-messages"/>
-
-   <feature url="features/timed-messages-eclipse-plugin-feature_0.0.1.jar" id="timed-messages-eclipse-plugin-feature" versio="0.0.1">
-      <category name="timed-messages_category"/>
-   </feature>
-</site>

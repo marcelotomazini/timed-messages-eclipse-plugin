@@ -1,71 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>com.marcelotomazini.eclipse.plugins</groupId>
-	<artifactId>timed-messages</artifactId>
-	<version>0.0.1</version>
+	<artifactId>timed-messages-eclipse-plugin</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>timed-messages</name>
-
-	<prerequisites>
-		<maven>3.0</maven>
-	</prerequisites>
-
-	<modules>
-		<module>timed-messages-eclipse-plugin</module>
-		<module>timed-messages-eclipse-plugin-feature</module>
-		<module>timed-messages-eclipse-plugin-repository</module>
-		<module>timed-messages-eclipse-plugin-test</module>
-	</modules>
+	<name>Timed Messages</name>
 
 	<properties>
+		<tycho-version>1.2.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>0.26.0</tycho-version>
-		<maven.compiler.source>1.8</maven.compiler.source>
-    	<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
-	<scm>
-		<connection>scm:git:git@github.com:marcelotomazini/timed-messages.git</connection>
-		<url>git@github.com:marcelotomazini/timed-messages.git</url>
-		<tag>HEAD</tag>
-	</scm>
+	<modules>
+		<module>eclipse-repository</module>
+		<module>timedmessages-bundle</module>
+		<module>timedmessages-feature</module>
+		<module>mars</module>
+	</modules>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-p2-repository-plugin</artifactId>
+				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
+				<configuration>
+					<target>
+						<artifact>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>mars</artifactId>
+							<version>${project.version}</version>
+						</artifact>
+					</target>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
 			</plugin>
-
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-compiler-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<compilerArgs>
-						<arg>-warn:-raw,unchecked</arg>
-					</compilerArgs>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
-
-	<repositories>
-		<repository>
-			<id>eclipse-oxygen</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/oxygen</url>
-		</repository>
-
-	</repositories>
-
 </project>
