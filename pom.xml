@@ -22,8 +22,8 @@
 	</modules>
 
 	<scm>
-  		<connection>scm:git:git@github.com:marcelotomazini/timed-messages-eclipse-plugin.git</connection>
-  		<developerConnection>scm:git:git@github.com:marcelotomazini/timed-messages-eclipse-plugin.git</developerConnection>
+  		<connection>scm:git:https://github.com/marcelotomazini/timed-messages-eclipse-plugin.git</connection>
+  		<developerConnection>scm:git:https://github.com/marcelotomazini/timed-messages-eclipse-plugin.git</developerConnection>
   		<url>git@github.com:marcelotomazini/timed-messages-eclipse-plugin.git</url>
 	  	<tag>HEAD</tag>
   	</scm>
