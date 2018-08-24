@@ -78,7 +78,7 @@
 			 <plugin>
 			  	<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-scm-plugin</artifactId>
-				<version>1.10.0</version>
+				<version>1.10.0</version> <-- mudar aqui
 				<executions>
 					<execution>
 						<id>default-cli</id>
@@ -93,18 +93,6 @@
 						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<providerImplementations>
-						<git>jgit</git>
-					</providerImplementations>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.scm</groupId>
-						<artifactId>maven-scm-provider-jgit</artifactId>
-						<version>1.10.0</version>
-					</dependency>
-				</dependencies>
  			</plugin>
 		</plugins>
 	</build>
